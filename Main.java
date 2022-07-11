@@ -1,5 +1,8 @@
 class Main {
   public static void main(String[] args) {
+    GUI n =new GUI ();
+    
+    /*
     Cola c = new Cola();
     int l=1;
     int l2=0;
@@ -17,5 +20,6 @@ class Main {
       System.out.println();
       c.Change();
     }
+    */
   }
 }

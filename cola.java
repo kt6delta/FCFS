@@ -1,5 +1,6 @@
 import java.util.Scanner;
-public class Cola{
+
+class Cola{
   Scanner sc = new Scanner(System.in);
   Nodo first;
   Nodo last;

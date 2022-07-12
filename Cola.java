@@ -51,7 +51,7 @@ public class Cola{
     Actual = first;
     if(first != null){
       do{
-        System.out.println("   "+Actual.id_client +"          "+Actual.deal+"          "+Actual.posicion);
+        //System.out.println("   "+Actual.id_client +"          "+Actual.deal+"          "+Actual.posicion);
       
     switch(Actual.posicion){
       case 1:

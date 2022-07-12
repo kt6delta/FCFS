@@ -3,7 +3,7 @@ public class Cola{
   Scanner sc = new Scanner(System.in);
   Nodo first;
   Nodo last;
-  private int num_deal=5;
+  private int num_deal=5, time= 500;
   GUI n;
   
   public Cola(GUI g){
@@ -99,14 +99,9 @@ public class Cola{
         n.deal[4][5].setText(String.valueOf(Actual.back));
         n.deal[4][6].setText(String.valueOf(Actual.wait));
         break;
-      }
-
-
-
-
-        
+      }      
         try{
-        Thread.sleep(400);
+        Thread.sleep(time);
       }catch(InterruptedException e ) {}
         Actual= Actual.next;
     }while(Actual != first);

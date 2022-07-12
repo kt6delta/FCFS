@@ -16,8 +16,9 @@ public class GUI extends JFrame implements ActionListener{
   private int x=80, y=50; //size celdas
   private int p=50;//origin tabla
   public int[][] date= new int[5][2];
+  public boolean infinito=false;
   
-  JButton btn;
+  private JButton btn;
   private JPanel contentPane;
   private Font letra = new Font("Verdana", Font.PLAIN, 12);
   private JLabel[] title=new JLabel[7]; 
@@ -102,6 +103,7 @@ public class GUI extends JFrame implements ActionListener{
         }
       }
       this.BorraDeal();
+      this.infinito=true;
     }
   }
   

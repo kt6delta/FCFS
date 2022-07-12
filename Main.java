@@ -9,23 +9,23 @@ class Main {
     c.DeployCola();
     System.out.println();
     c.Change();
-    
+    //se va para infinito
     int l=1;
     int l2=0;
     //System.out.println("id cliente" +"  "+"transacciones");
-    for(int i=0; true; i++){
+    for(int i=0; g.infinito; i++){
       int num = (int)(Math.random()*4+2); //2-4
       for(int n=1; n<num; n++){
-        c.Insert(l,(n+l2));
-        l++;
+         c.Insert(l,(n+l2));
+         l++;
+       }
+        if(l2==0){
+          l2++;
+        }
+        c.Calcula();
+        c.DeployCola();
+        System.out.println();
+        c.Change();
       }
-      if(l2==0){
-        l2++;
-      }
-      c.Calcula();
-      c.DeployCola();
-      System.out.println();
-      c.Change();
-    }
   }
 }

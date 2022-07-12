@@ -80,11 +80,11 @@ public class GUI extends JFrame implements ActionListener{
       }
     }
     //date default
-    txt[0][0].setText("A");
-    txt[1][0].setText("B");
-    txt[2][0].setText("C");
-    txt[3][0].setText("D");
-    txt[4][0].setText("E");
+    txt[0][0].setText("1");
+    txt[1][0].setText("2");
+    txt[2][0].setText("3");
+    txt[3][0].setText("4");
+    txt[4][0].setText("5");
     
     txt[0][1].setText("8");
     txt[1][1].setText("4");
@@ -101,11 +101,11 @@ public class GUI extends JFrame implements ActionListener{
           date[f][c]=Integer.parseInt(txt[f][c].getText());
         }
       }
-  
+      this.BorraDeal();
     }
   }
   
-  public void SeeTxt(boolean see){
+  private void SeeTxt(boolean see){
     for(int f=0; f<5; f++){
       for(int c=0; c<2; c++){
         deal[f][c].setText(txt[f][c].getText());
@@ -113,7 +113,7 @@ public class GUI extends JFrame implements ActionListener{
       }
     }
   }
-  public void BorraDeal(){
+  private void BorraDeal(){
     for(int f=0; f<5; f++){
       for(int c=0; c<7; c++){
         deal[f][c].setText("");    

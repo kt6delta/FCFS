@@ -58,7 +58,7 @@ public class GUI extends JFrame implements ActionListener{
     //procesos
     for(int f = 0; f < 5; f++) { //primero columnas
       for(int c = 0; c < 7; c++) {
-        if(c==1){//date defaul
+        if(c==2){//date defaul
           deal[f][c] = new JLabel(""+f,SwingConstants.CENTER);
         }else{
           deal[f][c] = new JLabel("",SwingConstants.CENTER);
@@ -85,17 +85,19 @@ public class GUI extends JFrame implements ActionListener{
     txt[2][0].setText("C");
     txt[3][0].setText("D");
     txt[4][0].setText("E");
-    for(int c=0; c<5; c++){
-      txt[c][1].setText(""+c);
-    }
     
+    txt[0][1].setText("8");
+    txt[1][1].setText("4");
+    txt[2][1].setText("9");
+    txt[3][1].setText("5");
+    txt[4][1].setText("2");
   }
 
   public void actionPerformed(ActionEvent e) {
     if (e.getSource()==btn) {
       SeeTxt(false);
       for(int f=0; f<5; f++){
-        for(int c=0; c<7; c++){
+        for(int c=0; c<2; c++){
           date[f][c]=Integer.parseInt(txt[f][c].getText());
         }
       }
@@ -105,7 +107,8 @@ public class GUI extends JFrame implements ActionListener{
   
   public void SeeTxt(boolean see){
     for(int f=0; f<5; f++){
-      for(int c=0; c<7; c++){
+      for(int c=0; c<2; c++){
+        deal[f][c].setText(txt[f][c].getText());
         txt[f][c].setVisible(see);
       }
     }

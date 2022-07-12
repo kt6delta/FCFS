@@ -9,11 +9,11 @@ class Main {
     c.DeployCola();
     System.out.println();
     c.Change();
-    //se va para infinito
+
     int l=1;
     int l2=0;
     //System.out.println("id cliente" +"  "+"transacciones");
-    for(int i=0; g.infinito; i++){
+    for(int i=0; true; i++){
       int num = (int)(Math.random()*4+2); //2-4
       for(int n=1; n<num; n++){
          c.Insert(l,(n+l2));

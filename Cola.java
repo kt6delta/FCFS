@@ -1,6 +1,5 @@
-import java.util.Scanner;
+
 public class Cola{
-  Scanner sc = new Scanner(System.in);
   Nodo first;
   Nodo last;
   private int num_deal=5, time= 500;
@@ -50,9 +49,9 @@ public class Cola{
     Nodo Actual= new Nodo();
     Actual = first;
     if(first != null){
+      n.BorraDeal();
       do{
         //System.out.println("   "+Actual.id_client +"          "+Actual.deal+"          "+Actual.posicion);
-      n.BorraDeal();
     switch(Actual.posicion){
       case 1:
         n.deal[0][0].setText(String.valueOf(Actual.id_client));
@@ -171,7 +170,7 @@ public class Cola{
         }
         this.move();
         this.DeployCola();
-        System.out.println("");
+        //System.out.println("");
         
         Anterior= Actual;
         Actual= Actual.next;

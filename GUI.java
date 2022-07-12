@@ -16,7 +16,7 @@ public class GUI extends JFrame implements ActionListener{
   private int x=80, y=50; //size celdas
   private int p=50;//origin tabla
   public int[][] date= new int[5][2];
-  public boolean infinito=false;
+
   
   private JButton btn;
   private JPanel contentPane;
@@ -102,8 +102,7 @@ public class GUI extends JFrame implements ActionListener{
           date[f][c]=Integer.parseInt(txt[f][c].getText());
         }
       }
-      this.BorraDeal();
-      this.infinito=true;
+      
     }
   }
   
@@ -118,8 +117,10 @@ public class GUI extends JFrame implements ActionListener{
   public void BorraDeal(){
     for(int f=0; f<5; f++){
       for(int c=0; c<7; c++){
-        deal[f][c].setText("");    
+        deal[f][c].setText("");  
       }
+    }
+        
     }
   }
 }

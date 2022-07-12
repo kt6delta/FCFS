@@ -1,48 +1,55 @@
 import java.awt.Color;
-//import java.awt.Graphics;
 import java.awt.Font;
+import java.awt.event.*;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JButton;
 
 import javax.swing.border.EmptyBorder;
 import javax.swing.BorderFactory;
 import javax.swing.SwingConstants; 
 
-public class GUI extends JFrame{
-  private JPanel contentPane;
+public class GUI extends JFrame implements ActionListener{
   private int x=80, y=50; //size celdas
   private int p=50;//origin tabla
-
+  public int[][] date= new int[5][2];
+  
+  JButton btn;
+  private JPanel contentPane;
   private Font letra = new Font("Verdana", Font.PLAIN, 12);
   private JLabel[] title=new JLabel[7]; 
   JLabel[][] deal = new JLabel[5][7];
-  JTextField[][] txt = new JTextField[5][7];
+  JTextField[][] txt = new JTextField[5][2];
   
   public GUI(){
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setBounds(100, 100, 450, 300);
+    setBounds(0,0,(int) Math.round(x*8.7),(y*10));
     contentPane = new JPanel();
     contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
     setContentPane(contentPane);
     contentPane.setLayout(null);
-    setBounds(0,0,700,500);
     setTitle("FCFS");
     setBackground(Color.lightGray);
     setVisible(true);
-
+    //btn
+    btn= new JButton("Start");
+    btn.setBounds(p+((int) Math.round(x*3.5)), (p+y)+(6*y),x,y);//posi(x,y)- tamaño(x,y)
+    add(btn);
+    btn.addActionListener(this);
+    
     //titles
     for(int c = 0; c < 7; c++) {
       title[c] = new JLabel("",SwingConstants.CENTER);
       title[c].setBounds(p+(c*x), p,x,y);//posi(x,y)- tamaño(x,y)
-      title[c].setBorder(BorderFactory.createLineBorder(Color.blue));
+      title[c].setBorder(BorderFactory.createLineBorder(Color.black));
       add(title[c]);
      }
     title[0].setText("Proceso");
-    title[1].setText("T.llegada");
-    title[2].setText("Rafaga");
+    title[1].setText("Rafaga");
+    title[2].setText("T.llegada");
     title[3].setText("T.comienzo");
     title[4].setText("T.final");
     title[5].setText("T.retorno");
@@ -51,38 +58,63 @@ public class GUI extends JFrame{
     //procesos
     for(int f = 0; f < 5; f++) { //primero columnas
       for(int c = 0; c < 7; c++) {
-        deal[f][c] = new JLabel("",SwingConstants.CENTER);
-        deal[f][c].setBounds(p+(c*x), (p+y)+(f*y),x,y);//posi(x,y)- tamaño(x,y)
-        deal[f][c].setText("Dato"+f+" "+c);             
-        deal[f][c].setBorder(BorderFactory.createLineBorder(Color.blue));
+        if(c==1){//date defaul
+          deal[f][c] = new JLabel(""+f,SwingConstants.CENTER);
+        }else{
+          deal[f][c] = new JLabel("",SwingConstants.CENTER);
+        }
+        deal[f][c].setBounds(p+(c*x), (p+y)+(f*y), x,y);//posi(x,y)- tamaño(x,y)        
+        deal[f][c].setBorder(BorderFactory.createLineBorder(Color.black));
         deal[f][c].setVerticalAlignment(SwingConstants.CENTER);
         deal[f][c].setFont(letra);
         add(deal[f][c]);
-        txt[f][c] = new JTextField("",SwingConstants.CENTER);
-        txt[f][c].setBounds(p+(c*x), (p+y)+(f*y),x,y);
       }
     }
-    //SeeTxt();
-  }
-  public void SeeTxt(){
-    for(int f=0; f<5; f++){
-      for(int c=0; c<7; c++){
+    //get datos
+    for(int f = 0; f < 5; f++) { //primero columnas
+      for(int c = 0; c < 2; c++) {
+        txt[f][c] = new JTextField("",SwingConstants.CENTER);
+        txt[f][c].setBounds(p+(c*x), (p+y)+(f*y),x,y);
+        txt[f][c].setFont(letra);
         add(txt[f][c]);
       }
     }
-  }
-  /*
-  public void paint(Graphics g) {
-    super.paint(g);
-    g.setColor(Color.black);//verticales
-    for(int i=0; i<7; i++){
-      g.drawLine(p+(i*x), p, p+(i*x), p+(y*6));//x1,y1,x2,y2
-    }
-    //horizontales
-    for(int i=0; i<7; i++){
-      g.drawLine(p, p+(i*y), p+(7*x), p+(i*y));//x1,y1,x2,y2
+    //date default
+    txt[0][0].setText("A");
+    txt[1][0].setText("B");
+    txt[2][0].setText("C");
+    txt[3][0].setText("D");
+    txt[4][0].setText("E");
+    for(int c=0; c<5; c++){
+      txt[c][1].setText(""+c);
     }
     
+  }
+
+  public void actionPerformed(ActionEvent e) {
+    if (e.getSource()==btn) {
+      SeeTxt(false);
+      for(int f=0; f<5; f++){
+        for(int c=0; c<7; c++){
+          date[f][c]=Integer.parseInt(txt[f][c].getText());
+        }
+      }
+  
     }
-  */
+  }
+  
+  public void SeeTxt(boolean see){
+    for(int f=0; f<5; f++){
+      for(int c=0; c<7; c++){
+        txt[f][c].setVisible(see);
+      }
+    }
+  }
+  public void BorraDeal(){
+    for(int f=0; f<5; f++){
+      for(int c=0; c<7; c++){
+        deal[f][c].setText("");    
+      }
+    }
+  }
 }

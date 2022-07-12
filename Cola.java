@@ -153,7 +153,7 @@ public class Cola{
           Actual.posicion=last.posicion+1;
           last=Actual;
           find = true;
-          System.out.println("repite");
+          //System.out.println("repite");
         }else{ //delete
           if(Actual== first){
             first= first.next;
@@ -166,7 +166,7 @@ public class Cola{
               Anterior.next = Actual.next;
             }
           }
-          System.out.println("Eliminado");
+          //System.out.println("Eliminado");
           find = true;
         }
         this.move();

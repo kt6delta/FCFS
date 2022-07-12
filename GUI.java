@@ -115,7 +115,7 @@ public class GUI extends JFrame implements ActionListener{
       }
     }
   }
-  private void BorraDeal(){
+  public void BorraDeal(){
     for(int f=0; f<5; f++){
       for(int c=0; c<7; c++){
         deal[f][c].setText("");    

@@ -52,7 +52,7 @@ public class Cola{
     if(first != null){
       do{
         //System.out.println("   "+Actual.id_client +"          "+Actual.deal+"          "+Actual.posicion);
-      
+      n.BorraDeal();
     switch(Actual.posicion){
       case 1:
         n.deal[0][0].setText(String.valueOf(Actual.id_client));

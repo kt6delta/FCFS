@@ -53,7 +53,7 @@ public class Cola{
       do{
         //System.out.println("   "+Actual.id_client +"          "+Actual.deal+"          "+Actual.posicion);
     switch(Actual.posicion){
-      case 1:
+      case 0:
         n.deal[0][0].setText(String.valueOf(Actual.id_client));
         n.deal[0][1].setText(String.valueOf(Actual.deal));
         n.deal[0][2].setText(String.valueOf(Actual.posicion));
@@ -62,7 +62,7 @@ public class Cola{
         n.deal[0][5].setText(String.valueOf(Actual.back));
         n.deal[0][6].setText(String.valueOf(Actual.wait));
         break;
-      case 2:
+      case 1:
         n.deal[1][0].setText(String.valueOf(Actual.id_client));
         n.deal[1][1].setText(String.valueOf(Actual.deal));
         n.deal[1][2].setText(String.valueOf(Actual.posicion));
@@ -71,7 +71,7 @@ public class Cola{
         n.deal[1][5].setText(String.valueOf(Actual.back));
         n.deal[1][6].setText(String.valueOf(Actual.wait));
         break;
-      case 3:
+      case 2:
         n.deal[2][0].setText(String.valueOf(Actual.id_client));
         n.deal[2][1].setText(String.valueOf(Actual.deal));
         n.deal[2][2].setText(String.valueOf(Actual.posicion));
@@ -80,7 +80,7 @@ public class Cola{
         n.deal[2][5].setText(String.valueOf(Actual.back));
         n.deal[2][6].setText(String.valueOf(Actual.wait));
         break;
-      case 4:
+      case 3:
         n.deal[3][0].setText(String.valueOf(Actual.id_client));
         n.deal[3][1].setText(String.valueOf(Actual.deal));
         n.deal[3][2].setText(String.valueOf(Actual.posicion));
@@ -89,7 +89,7 @@ public class Cola{
         n.deal[3][5].setText(String.valueOf(Actual.back));
         n.deal[3][6].setText(String.valueOf(Actual.wait));
         break;
-      case 5:
+      case 4:
         n.deal[4][0].setText(String.valueOf(Actual.id_client));
         n.deal[4][1].setText(String.valueOf(Actual.deal));
         n.deal[4][2].setText(String.valueOf(Actual.posicion));
@@ -98,7 +98,7 @@ public class Cola{
         n.deal[4][5].setText(String.valueOf(Actual.back));
         n.deal[4][6].setText(String.valueOf(Actual.wait));
         break;
-      }      
+      }  
         try{
         Thread.sleep(time);
       }catch(InterruptedException e ) {}
@@ -118,7 +118,6 @@ public class Cola{
       Actual.start=0;
       }
       Actual.next.start=Actual.start+Actual.deal;
-        
       Actual.end=Actual.deal+Actual.start;
       Actual.back=Actual.end-Actual.start;
       Actual.wait=Actual.back-Actual.deal;

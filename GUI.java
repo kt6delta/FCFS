@@ -24,7 +24,7 @@ public class GUI extends JFrame implements ActionListener{
   private JLabel[] title=new JLabel[7]; 
   JLabel[][] deal = new JLabel[5][7];
   JTextField[][] txt = new JTextField[5][2];
-  
+
   public GUI(){
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setBounds(0,0,(int) Math.round(x*8.7),(y*10));
@@ -41,6 +41,10 @@ public class GUI extends JFrame implements ActionListener{
     add(btn);
     btn.addActionListener(this);
     
+    this.SeeTabla();
+  }
+  
+  public void SeeTabla(){
     //titles
     for(int c = 0; c < 7; c++) {
       title[c] = new JLabel("",SwingConstants.CENTER);
@@ -93,7 +97,7 @@ public class GUI extends JFrame implements ActionListener{
     txt[3][1].setText("5");
     txt[4][1].setText("2");
   }
-
+  
   public void actionPerformed(ActionEvent e) {
     if (e.getSource()==btn) {
       SeeTxt(false);
@@ -102,32 +106,8 @@ public class GUI extends JFrame implements ActionListener{
           date[f][c]=Integer.parseInt(txt[f][c].getText());
         }
       }
-      Cola c = new Cola(this);
-      for(int n=0; n<5; n++){
-        c.Insert2(this.date[n][0],this.date[n][1],n);//id, rafaga,posicion
-      }
-    c.Calcula();
-    c.DeployCola();
-    System.out.println();
-    c.Change();
-
-    int l=1;
-    int l2=0;
-    //System.out.println("id cliente" +"  "+"transacciones");
-    for(int i=0; i<10; i++){
-      int num = (int)(Math.random()*4+2); //2-4
-      for(int n=1; n<num; n++){
-         c.Insert(l,(n+l2));
-         l++;
-       }
-        if(l2==0){
-          l2++;
-        }
-        c.Calcula();
-        c.DeployCola();
-        System.out.println();
-        c.Change();
-      }
+      Hilos h1 =new Hilos(this);
+      h1.TablaF();
     }
   }
   
@@ -146,5 +126,5 @@ public class GUI extends JFrame implements ActionListener{
       }
     }
         
-  }
+    }
 }

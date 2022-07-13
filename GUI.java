@@ -22,7 +22,7 @@ public class GUI extends JFrame {
 
   public GUI(){
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setBounds(0,0,(int) Math.round(x*8.7),(y*10));
+    setBounds(0,0,700,450);
     contentPane = new JPanel();
     contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
     setContentPane(contentPane);
@@ -31,7 +31,7 @@ public class GUI extends JFrame {
     setBackground(Color.lightGray);
     setVisible(true);
     
-    this.SeeTabla();
+    //this.SeeTabla();
   }
   
   public void SeeTabla(){
@@ -86,4 +86,5 @@ public class GUI extends JFrame {
     }
         
     }
+
 }

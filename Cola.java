@@ -1,7 +1,8 @@
+
 public class Cola{
   Nodo first;
   Nodo last;
-  private int num_deal=5, time= 500;
+  private int num_deal=5, time= 3000;
   GUI n;
   
   public Cola(GUI g){
@@ -94,21 +95,35 @@ public class Cola{
 
   public void Calcula(){
     Nodo Actual= new Nodo();
+    Actual = first;
+    
     if(first != null){
       do{
-      Actual = first;
-      if(Actual.posicion==0){
+      if(Actual.id_client==1){ //inicia
         Actual.start=0;
         Actual.next.start=Actual.deal;
-      }else{
-        Actual.next.start=Actual.deal+Actual.start;
+        Actual.end=Actual.deal;
+        Actual.back=Actual.deal;
+        Actual.wait=0;
+      }else{ //infinito
+        if(Actual == last){//encadenar al siguiente
+          Actual.end=Actual.deal+Actual.start;
+          Actual.back=Actual.end-Actual.posicion;
+          System.out.println(Actual.back+" "+Actual.end+"-"+Actual.start);
+          Actual.wait=Actual.back-Actual.deal;
+          Insert(Actual.id_client+1, Actual.posicion+1);
+          Actual.next.start=Actual.deal+Actual.start;
+          break;
+        }else{//rellena
+          Actual.next.start=Actual.deal+Actual.start;
+          Actual.end=Actual.deal+Actual.start;
+          Actual.back=Actual.end-Actual.posicion;
+          Actual.wait=Actual.back-Actual.deal;
+
+        }
       }
-      Actual.end=Actual.deal+Actual.start;
-      Actual.back=Actual.end-Actual.start;
-      Actual.wait=Actual.back-Actual.deal;
-        
-      Actual= Actual.next;
-      }while(Actual != last);
+        Actual= Actual.next;
+      }while(Actual != first);
     }
   }
   

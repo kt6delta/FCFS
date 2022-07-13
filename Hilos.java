@@ -11,7 +11,7 @@ public class Hilos{
   public void TablaInf(){//infinito
   int l=1;
   int l2=0;
-  for(int i=0; true; i++){
+  for(int i=0; i<2; i++){
     int num = (int)(Math.random()*4+2); //2-4
     for(int n=0; n<num; n++){
       c.Insert(l,(n+l2));
@@ -21,8 +21,9 @@ public class Hilos{
       l2++;
     }
     c.Calcula();
+    l++;
     c.DeployCola();
-    //System.out.println();
+    System.out.println();
     c.Change();
     }
   }

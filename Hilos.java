@@ -13,7 +13,7 @@ public class Hilos{
   int l2=0;
   for(int i=0; true; i++){
     int num = (int)(Math.random()*4+2); //2-4
-    for(int n=1; n<num; n++){
+    for(int n=0; n<num; n++){
       c.Insert(l,(n+l2));
       l++;
     }

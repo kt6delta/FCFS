@@ -1,4 +1,3 @@
-
 public class Cola{
   Nodo first;
   Nodo last;
@@ -10,23 +9,7 @@ public class Cola{
     last= null;
     this.n=g;
   }
-  public void Insert2(int id, int rafaga,int llega){
-    Nodo new1= new Nodo();
-    new1.id_client=id;
-    new1.deal = rafaga;
-    new1.posicion=llega;
-    
-    if(first == null){ //crea
-      first= new1;
-      last=new1;
-      first.next=first;
-    }
-    else{ //encadena al existente
-      last.next=new1;
-      new1.next= first;
-      last= new1;
-    }
-  }
+  
   public void Insert(int id_client, int posicion){
     Nodo new1= new Nodo();
     new1.deal = (int)(Math.random()*8+1); //entre 1- 8 transacciones
@@ -99,11 +82,11 @@ public class Cola{
         n.deal[4][6].setText(String.valueOf(Actual.wait));
         break;
       }  
-        try{
-        Thread.sleep(time);
-      }catch(InterruptedException e ) {}
         Actual= Actual.next;
     }while(Actual != first);
+    try{
+      Thread.sleep(time);
+    }catch(InterruptedException e ) {}
     }else{
       System.out.println("Lista vacia");
     }
@@ -111,18 +94,21 @@ public class Cola{
 
   public void Calcula(){
     Nodo Actual= new Nodo();
-    Actual = first;
     if(first != null){
       do{
-      if(Actual.posicion==0 || Actual.posicion==1 ){
-      Actual.start=0;
+      Actual = first;
+      if(Actual.posicion==0){
+        Actual.start=0;
+        Actual.next.start=Actual.deal;
+      }else{
+        Actual.next.start=Actual.deal+Actual.start;
       }
-      Actual.next.start=Actual.start+Actual.deal;
       Actual.end=Actual.deal+Actual.start;
       Actual.back=Actual.end-Actual.start;
       Actual.wait=Actual.back-Actual.deal;
+        
       Actual= Actual.next;
-      }while(Actual != first);
+      }while(Actual != last);
     }
   }
   

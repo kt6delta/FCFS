@@ -42,7 +42,7 @@ public class GUI extends JFrame {
     g.setColor(Color.black);//verticales base
     for(int lv=0; lv<lineV+1; lv++){
       g.drawLine(px+(lv*x), py, px+(lv*x), py+5);//x1,y1,x2,y2
-      if(lv){ //multiplo 10
+      if(lv%10 ==0){ //multiplo 10
         //escribe 10,20,30
       }
     }

@@ -39,16 +39,24 @@ public class GUI extends JFrame {
 
     public void paint(Graphics g) {
     super.paint(g);
-    g.setColor(Color.black);//verticales
-    for(int lh=0; lh<6; lh++){
-      for(int lv=0; lv<lineV+1; lv++){
+    g.setColor(Color.black);//verticales base
+    for(int lv=0; lv<lineV+1; lv++){
+      g.drawLine(px+(lv*x), py, px+(lv*x), py+5);//x1,y1,x2,y2
+      if(lv){ //multiplo 10
+        //escribe 10,20,30
+      }
+    }
+    //horizontal base
+    g.drawLine(px, py, px+(lineV*x), py);//x1,y1,x2,y2
+      //vertical variable
+    for(int lh=1; lh<6; lh++){//1<lh<6 == posicion
+      for(int lv=0; lv<lineV+1; lv++){//lv= T.comienzo lineV=T.final
       g.drawLine(px+(lv*x), py+(y*lh), px+(lv*x), py+(y*lh)+5);//x1,y1,x2,y2
       }
     }
-    //horizontales
-    for(int i=0; i<6; i++){
+    for(int i=1; i<6; i++){//horizontales variable
       g.drawLine(px, py+(i*y), px+(lineV*x), py+(i*y));//x1,y1,x2,y2
-    }
+    }  
   }
 
   public void SeeTabla(){

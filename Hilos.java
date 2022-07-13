@@ -2,17 +2,10 @@ public class Hilos{
   GUI g; 
   Cola c;
 
-  public Hilos(GUI n){
-    this.g =n; 
+  public Hilos(){
+    g = new GUI();
     c = new Cola(g);
-  }
-  public void TablaF(){
-  for(int n=0; n<5; n++){
-  c.Insert2(g.date[n][0],g.date[n][1],n);//id, rafaga,posicion
-  }
-  c.Calcula();
-  c.DeployCola();
-  c.Change();
+    TablaInf();
   }
 
   public void TablaInf(){//infinito
@@ -29,7 +22,7 @@ public class Hilos{
     }
     c.Calcula();
     c.DeployCola();
-    System.out.println();
+    //System.out.println();
     c.Change();
     }
   }

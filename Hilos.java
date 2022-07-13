@@ -1,9 +1,9 @@
 public class Hilos{
-  GUI g; 
+  Tabla g; 
   Cola c;
 
   public Hilos(){
-    g = new GUI();
+    g = new Tabla();
     c = new Cola(g);
     TablaInf();
   }

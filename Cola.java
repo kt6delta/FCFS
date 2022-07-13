@@ -3,9 +3,9 @@ public class Cola{
   Nodo first;
   Nodo last;
   private int num_deal=5, time= 3000;
-  GUI n;
+  Tabla n;
   
-  public Cola(GUI g){
+  public Cola(Tabla g){
     first= null;
     last= null;
     this.n=g;

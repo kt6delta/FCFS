@@ -5,7 +5,7 @@ public class Hilos{
   public Hilos(){
     g = new GUI();
     c = new Cola(g);
-    //TablaInf();
+    TablaInf();
   }
 
   public void TablaInf(){//infinito

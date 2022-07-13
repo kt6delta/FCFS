@@ -1,5 +1,6 @@
 class Main {
   public static void main(String[] args) {
-    Hilos h= new Hilos();
+    //Hilos h= new Hilos();
+    GUI g =new GUI();
   }
 }

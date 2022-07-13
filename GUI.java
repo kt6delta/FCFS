@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,15 +11,18 @@ import javax.swing.BorderFactory;
 import javax.swing.SwingConstants; 
 
 public class GUI extends JFrame {
-  private int x=80, y=50; //size celdas
-  private int p=50;//origin tabla
-  public int[][] date= new int[5][2];
-
-
   private JPanel contentPane;
+  
+  //private int x=80, y=50; //size celdas
+  private int p=50;//origin tabla
   private Font letra = new Font("Verdana", Font.PLAIN, 12);
   private JLabel[] title=new JLabel[7]; 
   JLabel[][] deal = new JLabel[5][7];
+  public int[][] date= new int[5][2];
+  
+  private int x=20, y=58;//size entre lineas
+  private int px=50,py=50;//origen linea
+  private int lineV=30;
 
   public GUI(){
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,10 +34,23 @@ public class GUI extends JFrame {
     setTitle("FCFS");
     setBackground(Color.lightGray);
     setVisible(true);
-    
     //this.SeeTabla();
   }
-  
+
+    public void paint(Graphics g) {
+    super.paint(g);
+    g.setColor(Color.black);//verticales
+    for(int lh=0; lh<6; lh++){
+      for(int lv=0; lv<lineV+1; lv++){
+      g.drawLine(px+(lv*x), py+(y*lh), px+(lv*x), py+(y*lh)+5);//x1,y1,x2,y2
+      }
+    }
+    //horizontales
+    for(int i=0; i<6; i++){
+      g.drawLine(px, py+(i*y), px+(lineV*x), py+(i*y));//x1,y1,x2,y2
+    }
+  }
+
   public void SeeTabla(){
     //titles
     for(int c = 0; c < 7; c++) {
@@ -86,5 +103,4 @@ public class GUI extends JFrame {
     }
         
     }
-
 }

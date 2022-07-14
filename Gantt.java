@@ -61,12 +61,12 @@ public class Gantt extends JFrame{
     if(plVf!=0){
       for(int lv=plVi; lv<plVf+1; lv++){//vertical
         g.drawLine(px+(lv*x), py+(y*plH), px+(lv*x), py+(y*plH)+5);//x1,y1,x2,y2
-        if(lv ==plVi || lv ==plVf){ //#guia
+        if(lv ==plVi || lv ==(plVf)){ //#guia
           g.drawString(""+lv, px+(lv*x),  py+(y*plH)+5+12);
       }
     }
       //horizontal
-      g.drawLine(px+(plVi*x), py+(plH*y), px+((plVf+1)*x), py+(plH*y));//x1,y1,x2,y2 
+      g.drawLine(px+(plVi*x), py+(plH*y), px+(plVf*x), py+(plH*y));//x1,y1,x2,y2 
     }
   }
 }

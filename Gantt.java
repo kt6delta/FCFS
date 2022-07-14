@@ -36,11 +36,6 @@ public class Gantt extends JFrame{
     }
   }
   
-  public void Empty(){
-    for(int f=1; f<6; f++){
-      title[f].setText("");
-    }
-  }
   public void idProceso(){//title
     int f=plH;
       if(f>0 && f<6){//1-5
@@ -53,10 +48,15 @@ public class Gantt extends JFrame{
     }
   }
   
-  
+  public void Empty(Graphics g){
+    for(int f=1; f<6; f++){
+      title[f].setText("");
+    }
+    super.paint(g);
+  }
   public void paint(Graphics g) {
     System.out.println("dibuje i="+plVi+" f="+plVf);
-    super.paint(g);
+    
     g.setColor(Color.black);//verticales base
     for(int lv=0; lv<lineV+1; lv++){
       g.drawLine(px+(lv*x), py, px+(lv*x), py+5);//x1,y1,x2,y2

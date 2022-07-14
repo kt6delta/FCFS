@@ -32,17 +32,16 @@ public class Gantt extends JFrame{
     setBackground(Color.lightGray);
     setVisible(true);
   }
-  public void idProceso(){
+  public void idProceso(){//title
     int f=plH;
-    if(f>0 && f<6){//1-5
-      System.out.println("dibuje i="+plVi+" f="+plVf);
-    title[f] = new JLabel(""+name,SwingConstants.CENTER);
-    title[f].setBounds(px, py+(y*f), 25,25);
-    title[f].setBorder(BorderFactory.createLineBorder(Color.black));
-    title[f].setVerticalAlignment(SwingConstants.CENTER);
-    title[f].setFont(letra);
-    add(title[f]);
-  }
+      if(f>0 && f<6){//1-5
+      title[f] = new JLabel(""+name,SwingConstants.CENTER);
+      title[f].setBounds(px, py+(y*f), 25,25);
+      title[f].setBorder(BorderFactory.createLineBorder(Color.black));
+      title[f].setVerticalAlignment(SwingConstants.CENTER);
+      title[f].setFont(letra);
+      add(title[f]);
+    }
   }
   
   

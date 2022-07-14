@@ -4,13 +4,17 @@ public class Cola extends Thread{
   private int num_deal=5, time= 3000;
   Tabla n;
   Gantt g;
+  private int num,l=1,l2=0;
+  int [] deal;
 
+  public void SetNum(int num1){
+    this.num=num1;
+  }
+  public void SetDeal(int[] deal1){
+    this.deal=deal1;
+  }
     @Override
   public void run(){ //corre tabla o Gant
-    int l=1;
-    int l2=0;
-    for(int i=0; i<2; i++){
-    int num = (int)(Math.random()*4+2); //2-4
     for(int n=0; n<num; n++){
       int deal=(int)(Math.random()*8+1);
       this.Insert(l,(n+l2),deal);//entre 1- 8 transacciones
@@ -28,7 +32,6 @@ public class Cola extends Thread{
       this.DeployColaG();
     }
     this.Change();
-      }
   }
   
   public Cola(Tabla t){

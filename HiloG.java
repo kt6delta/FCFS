@@ -27,7 +27,7 @@ public class HiloG extends Thread{
     cg.Calcula();
     l++;
     cg.DeployCola();
-    //cg.Change();
+    cg.Change();
     }
   }
 }

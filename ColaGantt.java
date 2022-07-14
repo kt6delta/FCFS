@@ -32,7 +32,7 @@ public class ColaGantt{
     Nodo Actual= new Nodo();
     Actual = first;
     if(first != null){
-      //por si es necesario borrar
+      n.Empty();
       do{
         n.plH=(Actual.posicion+1);
         n.plVf=Actual.end;

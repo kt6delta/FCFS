@@ -31,11 +31,20 @@ public class Gantt extends JFrame{
     setTitle("FCFS");
     setBackground(Color.lightGray);
     setVisible(true);
+    for(int f=1; f<6; f++){
+      title[f] = new JLabel("",SwingConstants.CENTER);
+    }
+  }
+  
+  public void Empty(){
+    for(int f=1; f<6; f++){
+      title[f].setText("");
+    }
   }
   public void idProceso(){//title
     int f=plH;
       if(f>0 && f<6){//1-5
-      title[f] = new JLabel(""+name,SwingConstants.CENTER);
+      title[f].setText(""+name);
       title[f].setBounds(px, py+(y*f), 25,25);
       title[f].setBorder(BorderFactory.createLineBorder(Color.black));
       title[f].setVerticalAlignment(SwingConstants.CENTER);

@@ -1,17 +1,25 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Font;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.BorderFactory;
+import javax.swing.SwingConstants; 
 
 public class Gantt extends JFrame{
   private JPanel contentPane;
+  private Font letra = new Font("Verdana", Font.PLAIN, 12);
   
   private int x=20, y=58;//size entre lineas
   private int px=50,py=50;//origen linea
   private int lineV=35;//#lines Verticales
   public int plH;//1<=plH<6 == posicion
   public int plVf,  plVi;  //plVi= T.comienzo plVf=T.final
+  JLabel[]title = new JLabel[5];
+  public int name; //Proceso
   
   public Gantt(){
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,6 +32,16 @@ public class Gantt extends JFrame{
     setBackground(Color.lightGray);
     setVisible(true);
   }
+  public void idProceso(){
+    int f=plH;
+    title[f] = new JLabel(""+name,SwingConstants.CENTER);
+    title[f].setBounds(px, py+(y*f), 25,25);
+    title[f].setBorder(BorderFactory.createLineBorder(Color.black));
+    title[f].setVerticalAlignment(SwingConstants.CENTER);
+    title[f].setFont(letra);
+    add(title[f]);
+  }
+  
   
   public void paint(Graphics g) {
     System.out.println("dibuje i="+plVi+" f="+plVf);

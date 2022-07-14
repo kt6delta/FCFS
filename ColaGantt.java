@@ -37,6 +37,8 @@ public class ColaGantt{
         n.plH=(Actual.posicion+1);
         n.plVf=Actual.end;
         n.plVi=Actual.start;
+        n.name=Actual.id_client;
+        n.idProceso();
        System.out.println(Actual.id_client+" "+Actual.deal+" "+Actual.posicion+" "+Actual.start+" "+Actual.end+" "+Actual.back+" "+Actual.wait);
         n.repaint();
         Actual= Actual.next;

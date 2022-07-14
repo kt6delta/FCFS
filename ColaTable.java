@@ -109,7 +109,6 @@ public class ColaTable{
         if(Actual == last){//encadenar al siguiente
           Actual.end=Actual.deal+Actual.start;
           Actual.back=Actual.end-Actual.posicion;
-          System.out.println(Actual.back+" "+Actual.end+"-"+Actual.start);
           Actual.wait=Actual.back-Actual.deal;
           Insert(Actual.id_client+1, Actual.posicion+1);
           Actual.next.start=Actual.deal+Actual.start;

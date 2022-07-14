@@ -9,13 +9,13 @@ public class Gantt extends JFrame{
   
   private int x=20, y=58;//size entre lineas
   private int px=50,py=50;//origen linea
-  private int lineV=30;//#lines Verticales
+  private int lineV=35;//#lines Verticales
   public int plH;//1<=plH<6 == posicion
   public int plVf,  plVi;  //plVi= T.comienzo plVf=T.final
   
   public Gantt(){
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setBounds(0,0,700,450);
+    setBounds(0,0,750,450);
     contentPane = new JPanel();
     contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
     setContentPane(contentPane);
@@ -26,6 +26,7 @@ public class Gantt extends JFrame{
   }
   
   public void paint(Graphics g) {
+    System.out.println("dibuje i="+plVi+" f="+plVf);
     super.paint(g);
     g.setColor(Color.black);//verticales base
     for(int lv=0; lv<lineV+1; lv++){
@@ -37,10 +38,15 @@ public class Gantt extends JFrame{
     //horizontal base
     g.drawLine(px, py, px+(lineV*x), py);//x1,y1,x2,y2
     //variable
-    for(int lv=plVi; lv<plVf+1; lv++){//vertical
-     g.drawLine(px+(lv*x), py+(y*plH), px+(lv*x), py+(y*plH)+5);//x1,y1,x2,y2
+    if(plVf!=0){
+      for(int lv=plVi; lv<plVf+1; lv++){//vertical
+        g.drawLine(px+(lv*x), py+(y*plH), px+(lv*x), py+(y*plH)+5);//x1,y1,x2,y2
+        if(lv ==plVi || lv ==plVf){ //#guia
+          g.drawString(""+lv, px+(lv*x),  py+5+12);
+      }
     }
-    //horizontal
-    g.drawLine(px, py+(plH*y), px+(lineV*x), py+(plH*y));//x1,y1,x2,y2 
+      //horizontal
+      g.drawLine(px+(plVi*x), py+(plH*y), px+((plVf+1)*x), py+(plH*y));//x1,y1,x2,y2 
+    }
   }
 }

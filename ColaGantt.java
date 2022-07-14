@@ -1,7 +1,7 @@
 public class ColaGantt{
   Nodo first;
   Nodo last;
-  private int num_deal=5, time= 3000;
+  private int num_deal=5, time= 1000;
   Gantt n;
   
   public ColaGantt(Gantt gui){
@@ -37,12 +37,13 @@ public class ColaGantt{
         n.plH=(Actual.posicion+1);
         n.plVf=Actual.end;
         n.plVi=Actual.start;
-        
+       System.out.println(Actual.id_client+" "+Actual.deal+" "+Actual.posicion+" "+Actual.start+" "+Actual.end+" "+Actual.back+" "+Actual.wait);
+        n.repaint();
         Actual= Actual.next;
-    }while(Actual != first);
-    try{
+      try{
       Thread.sleep(time);
     }catch(InterruptedException e ) {}
+    }while(Actual != first);
     }else{
       System.out.println("Lista vacia");
     }
@@ -64,7 +65,6 @@ public class ColaGantt{
         if(Actual == last){//encadenar al siguiente
           Actual.end=Actual.deal+Actual.start;
           Actual.back=Actual.end-Actual.posicion;
-          System.out.println(Actual.back+" "+Actual.end+"-"+Actual.start);
           Actual.wait=Actual.back-Actual.deal;
           Insert(Actual.id_client+1, Actual.posicion+1);
           Actual.next.start=Actual.deal+Actual.start;

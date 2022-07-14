@@ -1,10 +1,12 @@
 public class HiloT extends Thread{
   Tabla t; 
   ColaTable ct;
-
+  
+  @Override
   public void run(){
     TablaInf();
   }
+  
   public HiloT(){
     t = new Tabla();
     ct = new ColaTable(t);

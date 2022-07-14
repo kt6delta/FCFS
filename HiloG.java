@@ -2,6 +2,7 @@ public class HiloG extends Thread{
   Gantt g;
   ColaGantt cg;
   
+  @Override
   public void run(){
     GanttInf();
   }
@@ -14,7 +15,7 @@ public class HiloG extends Thread{
   public void GanttInf(){//infinito
   int l=1;
   int l2=0;
-  for(int i=0; i<2; i++){
+  for(int i=0; i<1; i++){
     int num = (int)(Math.random()*4+2); //2-4
     for(int n=0; n<num; n++){
       cg.Insert(l,(n+l2));
@@ -26,7 +27,7 @@ public class HiloG extends Thread{
     cg.Calcula();
     l++;
     cg.DeployCola();
-    cg.Change();
+    //cg.Change();
     }
   }
 }

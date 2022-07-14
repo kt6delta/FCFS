@@ -18,7 +18,7 @@ public class Gantt extends JFrame{
   private int lineV=35;//#lines Verticales
   public int plH;//1<=plH<6 == posicion
   public int plVf,  plVi;  //plVi= T.comienzo plVf=T.final
-  JLabel[]title = new JLabel[5];
+  JLabel[]title = new JLabel[6];
   public int name; //Proceso
   
   public Gantt(){
@@ -34,12 +34,15 @@ public class Gantt extends JFrame{
   }
   public void idProceso(){
     int f=plH;
+    if(f>0 && f<6){//1-5
+      System.out.println("dibuje i="+plVi+" f="+plVf);
     title[f] = new JLabel(""+name,SwingConstants.CENTER);
     title[f].setBounds(px, py+(y*f), 25,25);
     title[f].setBorder(BorderFactory.createLineBorder(Color.black));
     title[f].setVerticalAlignment(SwingConstants.CENTER);
     title[f].setFont(letra);
     add(title[f]);
+  }
   }
   
   

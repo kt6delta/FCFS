@@ -160,7 +160,7 @@ public class Cola extends Thread{
           Actual.end=Actual.deal+Actual.start;
           Actual.back=Actual.end-Actual.posicion;
           Actual.wait=Actual.back-Actual.deal;
-          Insert(Actual.id_client+1, Actual.posicion+1);
+          Insert(Actual.id_client+1, Actual.posicion+1,deal[0]);
           Actual.next.start=Actual.deal+Actual.start;
           break;
         }else{//rellena

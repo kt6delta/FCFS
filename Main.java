@@ -1,6 +1,8 @@
 class Main {
   public static void main(String[] args) {
-    //Hilos h= new Hilos();
-    Gantt g = new Gantt();
+    HiloT h1= new HiloT();
+    HiloG h2= new HiloG();
+
+    
   }
 }

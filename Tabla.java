@@ -29,11 +29,8 @@ public class Tabla extends JFrame {
     setTitle("FCFS");
     setBackground(Color.lightGray);
     setVisible(true);
-    
     this.SeeTabla();
   }
-
-    
 
   public void SeeTabla(){
     //titles

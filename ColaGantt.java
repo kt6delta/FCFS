@@ -1,11 +1,10 @@
-
-public class Cola{
+public class ColaGantt{
   Nodo first;
   Nodo last;
   private int num_deal=5, time= 3000;
-  Tabla n;
+  Gantt n;
   
-  public Cola(Tabla g){
+  public ColaGantt(Gantt g){
     first= null;
     last= null;
     this.n=g;
@@ -33,54 +32,23 @@ public class Cola{
     Nodo Actual= new Nodo();
     Actual = first;
     if(first != null){
-      n.BorraDeal();
+      //si es necesario borrar
       do{
-        //System.out.println("   "+Actual.id_client +"          "+Actual.deal+"          "+Actual.posicion);
     switch(Actual.posicion){
       case 0:
-        n.deal[0][0].setText(String.valueOf(Actual.id_client));
-        n.deal[0][1].setText(String.valueOf(Actual.deal));
-        n.deal[0][2].setText(String.valueOf(Actual.posicion));
-        n.deal[0][3].setText(String.valueOf(Actual.start));
-        n.deal[0][4].setText(String.valueOf(Actual.end));
-        n.deal[0][5].setText(String.valueOf(Actual.back));
-        n.deal[0][6].setText(String.valueOf(Actual.wait));
+        
         break;
       case 1:
-        n.deal[1][0].setText(String.valueOf(Actual.id_client));
-        n.deal[1][1].setText(String.valueOf(Actual.deal));
-        n.deal[1][2].setText(String.valueOf(Actual.posicion));
-        n.deal[1][3].setText(String.valueOf(Actual.start));
-        n.deal[1][4].setText(String.valueOf(Actual.end));
-        n.deal[1][5].setText(String.valueOf(Actual.back));
-        n.deal[1][6].setText(String.valueOf(Actual.wait));
+        
         break;
       case 2:
-        n.deal[2][0].setText(String.valueOf(Actual.id_client));
-        n.deal[2][1].setText(String.valueOf(Actual.deal));
-        n.deal[2][2].setText(String.valueOf(Actual.posicion));
-        n.deal[2][3].setText(String.valueOf(Actual.start));
-        n.deal[2][4].setText(String.valueOf(Actual.end));
-        n.deal[2][5].setText(String.valueOf(Actual.back));
-        n.deal[2][6].setText(String.valueOf(Actual.wait));
+
         break;
       case 3:
-        n.deal[3][0].setText(String.valueOf(Actual.id_client));
-        n.deal[3][1].setText(String.valueOf(Actual.deal));
-        n.deal[3][2].setText(String.valueOf(Actual.posicion));
-        n.deal[3][3].setText(String.valueOf(Actual.start));
-        n.deal[3][4].setText(String.valueOf(Actual.end));
-        n.deal[3][5].setText(String.valueOf(Actual.back));
-        n.deal[3][6].setText(String.valueOf(Actual.wait));
+
         break;
       case 4:
-        n.deal[4][0].setText(String.valueOf(Actual.id_client));
-        n.deal[4][1].setText(String.valueOf(Actual.deal));
-        n.deal[4][2].setText(String.valueOf(Actual.posicion));
-        n.deal[4][3].setText(String.valueOf(Actual.start));
-        n.deal[4][4].setText(String.valueOf(Actual.end));
-        n.deal[4][5].setText(String.valueOf(Actual.back));
-        n.deal[4][6].setText(String.valueOf(Actual.wait));
+
         break;
       }  
         Actual= Actual.next;

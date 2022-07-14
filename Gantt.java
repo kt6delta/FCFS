@@ -5,11 +5,15 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 public class Gantt extends JFrame{
+
+    public void run(){
+    
+  }
   private JPanel contentPane;
   
   private int x=20, y=58;//size entre lineas
   private int px=50,py=50;//origen linea
-  private int lineV=30;
+  private int lineV=30;//#lines Verticales
 
   public Gantt(){
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -21,10 +25,11 @@ public class Gantt extends JFrame{
     setTitle("FCFS");
     setBackground(Color.lightGray);
     setVisible(true);
-    //this.SeeTabla();
   }
   
-  public void paint(Graphics g) {
+  public void paint(int plH,int plVf,int plVi,Graphics g) {
+  //1<plH<6 == posicion
+  //plVi= T.comienzo plVf=T.final
     super.paint(g);
     g.setColor(Color.black);//verticales base
     for(int lv=0; lv<lineV+1; lv++){
@@ -35,15 +40,11 @@ public class Gantt extends JFrame{
     }
     //horizontal base
     g.drawLine(px, py, px+(lineV*x), py);//x1,y1,x2,y2
-      //vertical variable
-    for(int lh=1; lh<6; lh++){//1<lh<6 == posicion
-      for(int lv=0; lv<lineV+1; lv++){//lv= T.comienzo lineV=T.final
-      g.drawLine(px+(lv*x), py+(y*lh), px+(lv*x), py+(y*lh)+5);//x1,y1,x2,y2
-      }
+    //variable
+    for(int lv=plVi; lv<plVf+1; lv++){//vertical
+     g.drawLine(px+(lv*x), py+(y*plH), px+(lv*x), py+(y*plH)+5);//x1,y1,x2,y2
     }
-    //horizontales variable
-    for(int lh=1; lh<6; lh++){
-      g.drawLine(px, py+(lh*y), px+(lineV*x), py+(lh*y));//x1,y1,x2,y2
-    }  
+    //horizontal
+    g.drawLine(px, py+(plH*y), px+(lineV*x), py+(plH*y));//x1,y1,x2,y2 
   }
 }

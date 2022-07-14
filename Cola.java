@@ -3,7 +3,7 @@ public class Cola extends Thread{
   Nodo last;
   Tabla n;
   Gantt g;
-  private int num_deal=5, time= 3000;
+  private int num_deal=8, time= 3000;
   private int num,l=1,l2=0;
   private int [] deal;
 
@@ -70,10 +70,10 @@ public class Cola extends Thread{
        System.out.println(Actual.id_client+" "+Actual.deal+" "+Actual.posicion+" "+Actual.start+" "+Actual.end+" "+Actual.back+" "+Actual.wait);
         g.repaint();
         Actual= Actual.next;
+    }while(Actual != first);
       try{
       Thread.sleep(time);
     }catch(InterruptedException e ) {}
-    }while(Actual != first);
     }else{
       System.out.println("Lista vacia");
     }
@@ -195,7 +195,7 @@ public class Cola extends Thread{
     boolean find=false;
     
     if(first != null){//si lista vacia
-      do{//recorre cola       
+      do{//recorre cola         
         if(Actual.deal > num_deal ){ //-4 deals
           Actual.deal=Actual.deal-num_deal;
           Actual.posicion=last.posicion+1;

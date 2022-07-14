@@ -1,19 +1,50 @@
-
-public class ColaTable{
+public class Cola extends Thread{
   Nodo first;
   Nodo last;
   private int num_deal=5, time= 3000;
   Tabla n;
+  Gantt g;
 
-  public ColaTable(Tabla g){
-    first= null;
-    last= null;
-    this.n=g;
+    @Override
+  public void run(){ //corre tabla o Gant
+    int l=1;
+    int l2=0;
+    for(int i=0; i<2; i++){
+    int num = (int)(Math.random()*4+2); //2-4
+    for(int n=0; n<num; n++){
+      int deal=(int)(Math.random()*8+1);
+      this.Insert(l,(n+l2),deal);//entre 1- 8 transacciones
+      l++;
+    }
+    if(l2==0){
+      l2++;
+    }
+    this.Calcula();
+    l++;
+    if(n!=null){
+      this.DeployColaT();
+    }
+    if(g != null){
+      this.DeployColaG();
+    }
+    this.Change();
+      }
   }
   
-  public void Insert(int id_client, int posicion){
+  public Cola(Tabla t){
+    first= null;
+    last= null;
+    this.n=t;
+  }
+  public Cola(Gantt g1){
+    first= null;
+    last= null;
+    this.g=g1;
+  }
+  
+  public void Insert(int id_client, int posicion,int deal2){
     Nodo new1= new Nodo();
-    new1.deal = (int)(Math.random()*8+1); //entre 1- 8 transacciones
+    new1.deal = deal2; //entre 1- 8 transacciones
     new1.id_client=id_client;
     new1.posicion=posicion;
     
@@ -29,7 +60,30 @@ public class ColaTable{
     }
   }
 
-  public void DeployCola(){//solo imprime
+  public void DeployColaG(){//solo imprime
+    Nodo Actual= new Nodo();
+    Actual = first;
+    if(first != null){
+      g.Empty();
+      do{
+        g.plH=(Actual.posicion+1);
+        g.plVf=Actual.end;
+        g.plVi=Actual.start;
+        g.name=Actual.id_client;
+        g.idProceso();
+       System.out.println(Actual.id_client+" "+Actual.deal+" "+Actual.posicion+" "+Actual.start+" "+Actual.end+" "+Actual.back+" "+Actual.wait);
+        g.repaint();
+        Actual= Actual.next;
+      try{
+      Thread.sleep(time);
+    }catch(InterruptedException e ) {}
+    }while(Actual != first);
+    }else{
+      System.out.println("Lista vacia");
+    }
+  }
+  
+  public void DeployColaT(){//solo imprime
     Nodo Actual= new Nodo();
     Actual = first;
     if(first != null){
@@ -168,7 +222,12 @@ public class ColaTable{
           find = true;
         }
         this.move();
-        this.DeployCola();
+        if(n != null){
+          this.DeployColaT();
+        }
+        if(g != null){
+          this.DeployColaG();
+        }
         //System.out.println("");
         
         Anterior= Actual;
@@ -180,5 +239,4 @@ public class ColaTable{
       
     }
   }
-
 }

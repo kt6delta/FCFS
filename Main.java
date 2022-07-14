@@ -1,8 +1,15 @@
 class Main {
   public static void main(String[] args) {
-    //HiloT h1= new HiloT();
-    HiloG h2= new HiloG();
-    //h1.start();
-    h2.start();
+  Tabla t = new Tabla(); 
+  Cola ct = new Cola(t); //colaT
+    
+  Gantt g= new Gantt();
+  Cola cg= new Cola(g); //colaG
+  int num;
+  int deal;
+    
+  ct.start();
+  cg.start();
+
   }
 }

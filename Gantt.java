@@ -23,7 +23,7 @@ public class Gantt extends JFrame{
   
   public Gantt(){
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setBounds(0,0,750,450);
+    setBounds(0,450,750,450);
     contentPane = new JPanel();
     contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
     setContentPane(contentPane);

@@ -1,18 +1,12 @@
 public class Cola extends Thread{
   Nodo first;
   Nodo last;
-  private int num_deal=5, time= 3000;
   Tabla n;
   Gantt g;
+  private int num_deal=5, time= 3000;
   private int num,l=1,l2=0;
-  int [] deal;
+  private int [] deal;
 
-  public void SetNum(int num1){
-    this.num=num1;
-  }
-  public void SetDeal(int[] deal1){
-    this.deal=deal1;
-  }
     @Override
   public void run(){ //corre tabla o Gant
     for(int n=0; n<num; n++){
@@ -44,7 +38,7 @@ public class Cola extends Thread{
     this.g=g1;
   }
   
-  public void Insert(int id_client, int posicion,int deal2){
+  private void Insert(int id_client, int posicion,int deal2){
     Nodo new1= new Nodo();
     new1.deal = deal2; //entre 1- 8 transacciones
     new1.id_client=id_client;
@@ -62,7 +56,7 @@ public class Cola extends Thread{
     }
   }
 
-  public void DeployColaG(){//solo imprime
+  private void DeployColaG(){//solo imprime
     Nodo Actual= new Nodo();
     Actual = first;
     if(first != null){
@@ -85,7 +79,7 @@ public class Cola extends Thread{
     }
   }
   
-  public void DeployColaT(){//solo imprime
+  private void DeployColaT(){//solo imprime
     Nodo Actual= new Nodo();
     Actual = first;
     if(first != null){
@@ -149,7 +143,7 @@ public class Cola extends Thread{
     }
   }
 
-  public void Calcula(){
+  private void Calcula(){
     Nodo Actual= new Nodo();
     Actual = first;
     
@@ -182,7 +176,7 @@ public class Cola extends Thread{
     }
   }
   
-  public void move(){ //-1 a todos
+  private void move(){ //-1 a todos
     Nodo Actual= new Nodo();
     Actual = first;
     if(first != null){
@@ -193,7 +187,7 @@ public class Cola extends Thread{
     }
   }
 
-  public void Change(){ //ultimo no se modifica
+  private void Change(){ //ultimo no se modifica
     Nodo Actual= new Nodo();
     Actual = first;
     Nodo Anterior = new Nodo();
@@ -240,5 +234,13 @@ public class Cola extends Thread{
       }
       
     }
+  }
+
+  public void SetNum(int num1){
+    this.num=num1;
+  }
+  
+  public void SetDeal(int[] deal1){
+    this.deal=deal1;
   }
 }

@@ -16,8 +16,7 @@ public class Cola extends Thread{
     @Override
   public void run(){ //corre tabla o Gant
     for(int n=0; n<num; n++){
-      int deal=(int)(Math.random()*8+1);
-      this.Insert(l,(n+l2),deal);//entre 1- 8 transacciones
+      this.Insert(l,(n+l2),deal[n]);//entre 1- 8 transacciones
       l++;
     }
     if(l2==0){

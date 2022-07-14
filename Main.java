@@ -1,7 +1,7 @@
 class Main {
   public static void main(String[] args) {
   int num;
-  for(int i=0; i<2; i++){
+  for(int i=0; i<1; i++){
     num = (int)(Math.random()*4+2); //2-4
     int[] deal = new int[num];
     for(int n=0; n<num; n++){

@@ -20,11 +20,11 @@ public class Cola extends Thread{
     l++;
     if(n!=null){
       this.DeployColaT();
+      this.Change();
     }
     if(g != null){
       this.DeployColaG();
-    }
-    this.Change();
+    }  
   }
   
   public Cola(Tabla t){

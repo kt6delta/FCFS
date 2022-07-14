@@ -56,7 +56,7 @@ public class Gantt extends JFrame{
   
   public void paint(Graphics g) {
     System.out.println("dibuje i="+plVi+" f="+plVf);
-    super.paint(g);
+    //super.paint(g);
     g.setColor(Color.black);//verticales base
     for(int lv=0; lv<lineV+1; lv++){
       g.drawLine(px+(lv*x), py, px+(lv*x), py+5);//x1,y1,x2,y2

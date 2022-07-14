@@ -1,9 +1,7 @@
-
-
 public class ColaGantt{
   Nodo first;
   Nodo last;
-  private int num_deal=5, time= 1000;
+  private int num_deal=5, time= 2000;
   Gantt n;
   
   public ColaGantt(Gantt gui){
@@ -35,7 +33,6 @@ public class ColaGantt{
     Actual = first;
     if(first != null){
       n.Empty();
-      n.b=2;
       do{
         n.plH=(Actual.posicion+1);
         n.plVf=Actual.end;

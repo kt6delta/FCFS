@@ -15,7 +15,7 @@ public class HiloT extends Thread{
   public void TablaInf(){//infinito
   int l=1;
   int l2=0;
-  for(int i=0; i<1; i++){
+  for(int i=0; i<2; i++){
     int num = (int)(Math.random()*4+2); //2-4
     for(int n=0; n<num; n++){
       ct.Insert(l,(n+l2));

@@ -2,11 +2,14 @@ public class HiloT extends Thread{
   Tabla t; 
   ColaTable ct;
 
+  public void run(){
+    TablaInf();
+  }
   public HiloT(){
     t = new Tabla();
     ct = new ColaTable(t);
-    TablaInf();
   }
+  
   public void TablaInf(){//infinito
   int l=1;
   int l2=0;

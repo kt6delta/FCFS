@@ -3,13 +3,12 @@ public class HiloG extends Thread{
   ColaGantt cg;
   
   public void run(){
-    
+    GanttInf();
   }
 
   public HiloG(){
     g= new Gantt();
     cg= new ColaGantt(g);
-    GanttInf();
   }
   
   public void GanttInf(){//infinito

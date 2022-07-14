@@ -5,16 +5,14 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 public class Gantt extends JFrame{
-
-    public void run(){
-    
-  }
   private JPanel contentPane;
   
   private int x=20, y=58;//size entre lineas
   private int px=50,py=50;//origen linea
   private int lineV=30;//#lines Verticales
-
+  public int plH;//1<=plH<6 == posicion
+  public int plVf,  plVi;  //plVi= T.comienzo plVf=T.final
+  
   public Gantt(){
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setBounds(0,0,700,450);
@@ -27,9 +25,7 @@ public class Gantt extends JFrame{
     setVisible(true);
   }
   
-  public void paint(int plH,int plVf,int plVi,Graphics g) {
-  //1<plH<6 == posicion
-  //plVi= T.comienzo plVf=T.final
+  public void paint(Graphics g) {
     super.paint(g);
     g.setColor(Color.black);//verticales base
     for(int lv=0; lv<lineV+1; lv++){

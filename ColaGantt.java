@@ -4,10 +4,10 @@ public class ColaGantt{
   private int num_deal=5, time= 3000;
   Gantt n;
   
-  public ColaGantt(Gantt g){
+  public ColaGantt(Gantt gui){
     first= null;
     last= null;
-    this.n=g;
+    this.n=gui;
   }
   
   public void Insert(int id_client, int posicion){
@@ -32,25 +32,12 @@ public class ColaGantt{
     Nodo Actual= new Nodo();
     Actual = first;
     if(first != null){
-      //si es necesario borrar
+      //por si es necesario borrar
       do{
-    switch(Actual.posicion){
-      case 0:
+        n.plH=(Actual.posicion+1);
+        n.plVf=Actual.end;
+        n.plVi=Actual.start;
         
-        break;
-      case 1:
-        
-        break;
-      case 2:
-
-        break;
-      case 3:
-
-        break;
-      case 4:
-
-        break;
-      }  
         Actual= Actual.next;
     }while(Actual != first);
     try{

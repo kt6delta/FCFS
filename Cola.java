@@ -3,7 +3,7 @@ public class Cola extends Thread{
   Nodo last;
   Tabla n;
   Gantt g;
-  private int num_deal=8, time= 3000;
+  private int num_deal=8, time= 3000, timeg=2000;
   private int num,l=1,l2=0;
   private int [] deal;
 
@@ -20,11 +20,11 @@ public class Cola extends Thread{
     l++;
     if(n!=null){
       this.DeployColaT();
-      this.Change();
     }
     if(g != null){
       this.DeployColaG();
     }  
+    this.Change();
   }
   
   public Cola(Tabla t){
@@ -70,10 +70,10 @@ public class Cola extends Thread{
        System.out.println(Actual.id_client+" "+Actual.deal+" "+Actual.posicion+" "+Actual.start+" "+Actual.end+" "+Actual.back+" "+Actual.wait);
         g.repaint();
         Actual= Actual.next;
-    }while(Actual != first);
       try{
-      Thread.sleep(time);
+      Thread.sleep(timeg);
     }catch(InterruptedException e ) {}
+    }while(Actual != first);
     }else{
       System.out.println("Lista vacia");
     }
@@ -220,9 +220,6 @@ public class Cola extends Thread{
         this.move();
         if(n != null){
           this.DeployColaT();
-        }
-        if(g != null){
-          this.DeployColaG();
         }
         //System.out.println("");
         

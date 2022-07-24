@@ -1,28 +1,33 @@
+package logic;
+
+import gui.Gantt;
+import gui.Tabla;
+
 public class Cola extends Thread{
   Nodo first;
   Nodo last;
   Tabla n;
   Gantt g;
-  private int num_deal=8, time= 3000, timeg=2000;
-  private int num,l=1,l2=0;
+  private int num_deal=8, time= 2000;
+  private int num,l=1;
   private int [] deal;
+private int[] llegada;
 
     @Override
   public void run(){ //corre tabla o Gant
     for(int n=0; n<num; n++){
-      this.Insert(l,(n+l2),deal[n]);//entre 1- 8 transacciones
+      this.Insert(l,n,deal[n],llegada[n]);//entre 1- 8 transacciones
       l++;
     }
-    if(l2==0){
-      l2++;
-    }
     this.Calcula();
-    l++;
     if(n!=null){
+    	n.SeeTabla();
       this.DeployColaT();
+      
     }
     if(g != null){
-      this.DeployColaG();
+    	this.DeployColaG();
+    	g.SeeGantt();
     }  
     this.Change();
   }
@@ -38,11 +43,12 @@ public class Cola extends Thread{
     this.g=g1;
   }
   
-  private void Insert(int id_client, int posicion,int deal2){
+  private void Insert(int id_client, int posicion,int deal2, int llegada){
     Nodo new1= new Nodo();
     new1.deal = deal2; //entre 1- 8 transacciones
     new1.id_client=id_client;
     new1.posicion=posicion;
+    new1.llegada=llegada;
     
     if(first == null){ //crea
       first= new1;
@@ -60,19 +66,16 @@ public class Cola extends Thread{
     Nodo Actual= new Nodo();
     Actual = first;
     if(first != null){
-      g.Empty();
+    	g.tamaño=num;
+    	g.initArray();
       do{
-        g.plH=(Actual.posicion+1);
-        g.plVf=Actual.end;
-        g.plVi=Actual.start;
-        g.name=Actual.id_client;
-        g.idProceso();
-       System.out.println(Actual.id_client+" "+Actual.deal+" "+Actual.posicion+" "+Actual.start+" "+Actual.end+" "+Actual.back+" "+Actual.wait);
-        g.repaint();
+    	  if(Actual!=last) {
+        g.Tdeal[Actual.posicion]=Actual.deal;
+        g.Tstart[Actual.posicion]=Actual.start;
+        g.idName[Actual.posicion]=Actual.id_client;
+    	  }
+       //System.out.println(Actual.id_client+" "+Actual.deal+" "+Actual.posicion+" "+Actual.start+" "+Actual.end+" "+Actual.back+" "+Actual.wait);
         Actual= Actual.next;
-      try{
-      Thread.sleep(timeg);
-    }catch(InterruptedException e ) {}
     }while(Actual != first);
     }else{
       System.out.println("Lista vacia");
@@ -83,14 +86,15 @@ public class Cola extends Thread{
     Nodo Actual= new Nodo();
     Actual = first;
     if(first != null){
-      n.BorraDeal();
+    	n.BorraDeal(); //la primera ejecucion no	
       do{
         //System.out.println("   "+Actual.id_client +"          "+Actual.deal+"          "+Actual.posicion);
+    	  if(Actual.back!=0) {
     switch(Actual.posicion){
       case 0:
         n.deal[0][0].setText(String.valueOf(Actual.id_client));
         n.deal[0][1].setText(String.valueOf(Actual.deal));
-        n.deal[0][2].setText(String.valueOf(Actual.posicion));
+        n.deal[0][2].setText(String.valueOf(Actual.llegada));
         n.deal[0][3].setText(String.valueOf(Actual.start));
         n.deal[0][4].setText(String.valueOf(Actual.end));
         n.deal[0][5].setText(String.valueOf(Actual.back));
@@ -99,7 +103,7 @@ public class Cola extends Thread{
       case 1:
         n.deal[1][0].setText(String.valueOf(Actual.id_client));
         n.deal[1][1].setText(String.valueOf(Actual.deal));
-        n.deal[1][2].setText(String.valueOf(Actual.posicion));
+        n.deal[1][2].setText(String.valueOf(Actual.llegada));
         n.deal[1][3].setText(String.valueOf(Actual.start));
         n.deal[1][4].setText(String.valueOf(Actual.end));
         n.deal[1][5].setText(String.valueOf(Actual.back));
@@ -108,7 +112,7 @@ public class Cola extends Thread{
       case 2:
         n.deal[2][0].setText(String.valueOf(Actual.id_client));
         n.deal[2][1].setText(String.valueOf(Actual.deal));
-        n.deal[2][2].setText(String.valueOf(Actual.posicion));
+        n.deal[2][2].setText(String.valueOf(Actual.llegada));
         n.deal[2][3].setText(String.valueOf(Actual.start));
         n.deal[2][4].setText(String.valueOf(Actual.end));
         n.deal[2][5].setText(String.valueOf(Actual.back));
@@ -117,7 +121,7 @@ public class Cola extends Thread{
       case 3:
         n.deal[3][0].setText(String.valueOf(Actual.id_client));
         n.deal[3][1].setText(String.valueOf(Actual.deal));
-        n.deal[3][2].setText(String.valueOf(Actual.posicion));
+        n.deal[3][2].setText(String.valueOf(Actual.llegada));
         n.deal[3][3].setText(String.valueOf(Actual.start));
         n.deal[3][4].setText(String.valueOf(Actual.end));
         n.deal[3][5].setText(String.valueOf(Actual.back));
@@ -126,13 +130,14 @@ public class Cola extends Thread{
       case 4:
         n.deal[4][0].setText(String.valueOf(Actual.id_client));
         n.deal[4][1].setText(String.valueOf(Actual.deal));
-        n.deal[4][2].setText(String.valueOf(Actual.posicion));
+        n.deal[4][2].setText(String.valueOf(Actual.llegada));
         n.deal[4][3].setText(String.valueOf(Actual.start));
         n.deal[4][4].setText(String.valueOf(Actual.end));
         n.deal[4][5].setText(String.valueOf(Actual.back));
         n.deal[4][6].setText(String.valueOf(Actual.wait));
         break;
-      }  
+      }
+    	  }
         Actual= Actual.next;
     }while(Actual != first);
     try{
@@ -160,7 +165,7 @@ public class Cola extends Thread{
           Actual.end=Actual.deal+Actual.start;
           Actual.back=Actual.end-Actual.posicion;
           Actual.wait=Actual.back-Actual.deal;
-          Insert(Actual.id_client+1, Actual.posicion+1,deal[0]);
+          Insert(Actual.id_client+1, Actual.posicion+1,deal[0],llegada[num-1]+1);
           Actual.next.start=Actual.deal+Actual.start;
           break;
         }else{//rellena
@@ -240,4 +245,9 @@ public class Cola extends Thread{
   public void SetDeal(int[] deal1){
     this.deal=deal1;
   }
+
+public void setLlegada(int[] tllegada) {
+	this.llegada=tllegada;
+	
+}
 }

@@ -1,3 +1,4 @@
+package logic;
 public class Nodo {
   int id_client;
   int deal;
@@ -9,4 +10,5 @@ public class Nodo {
   
   int posicion;
   Nodo next;
+  int llegada;
 }
